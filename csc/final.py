@@ -19,7 +19,7 @@ driver.set_window_size(425,700)
 #login = WebDriverWait(driver,20).until(lambda d : d.find_element(by=By.CLASS_NAME, value='MuiTypography-root MuiTypography-subtitle1'))
 #driver.implicitly_wait(10)
 time.sleep(3)
-"""
+
 #訪客
 login = driver.find_element(by=By.XPATH, value='//button[@style="margin-top: 30px; color: rgb(186, 186, 186); padding: 0px;"]')
 login.click()
@@ -42,7 +42,8 @@ button[0].click()
 login = driver.find_element(by=By.XPATH, value='//button[@style="margin-top: 30px; color: rgb(186, 186, 186); padding: 0px;"]')
 assert '以訪客身分進入' == login.text
 print("test case 7 finished")
-"""
+
+#test case 6
 original_window = driver.current_window_handle
 assert len(driver.window_handles) == 1
 login = driver.find_element(by=By.XPATH, value='//h6[@class="MuiTypography-root MuiTypography-subtitle1"]')
@@ -79,7 +80,9 @@ if(len(driver.find_elements(by=By.XPATH, value='//button[@class="MuiButtonBase-r
 button = driver.find_elements(by=By.XPATH, value='//span[@class="MuiFab-label"]')
 #click the plus button
 button[0].click()
-check = driver.find_elements(by=By.XPATH, value='//span[@class="MuiTypography-root MuiListItemText-primary jss164 MuiTypography-body1 MuiTypography-displayBlock"]')
+time.sleep(3)
+check = driver.find_elements(by=By.XPATH, value='//div[@class="MuiListItemText-root MuiListItemText-multiline"]')
+#print('check amount = {}'.format(len(check)))
 assert len(check) == 3
 print("test case 6 done")
 
