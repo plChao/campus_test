@@ -89,3 +89,40 @@ afarray = png_bytes_to_numpy(afclick)
 driver.quit()
 assert png_is_equal(bfarray, afarray, 1)
 
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+
+driver.get("https://smartcampus-1b31f.firebaseapp.com")
+driver.maximize_window()
+driver.implicitly_wait(5)
+enter_as_guest = driver.find_elements(By.CLASS_NAME, value="MuiButton-text")
+# print(enter_as_guest, len(enter_as_guest))
+enter_as_guest[1].click()
+
+time.sleep(4)
+target = '台北101'
+search_box = driver.find_element(By.ID, "inputBase")
+search_box.send_keys(target)
+search_result = driver.find_element(By.CLASS_NAME, "pac-item")
+search_result.click()
+info = driver.find_element(By.ID, "client-snackbar")
+assert info.text == '地址超過搜尋範圍', info.text
+driver.quit()
+print('test 5 pass')
+
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+driver.get("https://smartcampus-1b31f.firebaseapp.com")
+driver.maximize_window()
+driver.implicitly_wait(5)
+enter_as_guest = driver.find_elements(By.CLASS_NAME, value="MuiButton-text")
+# print(enter_as_guest, len(enter_as_guest))
+enter_as_guest[1].click()
+
+time.sleep(4)
+target = '工程三館'
+search_box = driver.find_element(By.ID, "inputBase")
+search_box.send_keys(target)
+search_result = driver.find_element(By.CLASS_NAME, "pac-item")
+search_result.click()
+info = driver.find_elements(By.ID, "client-snackbar")
+assert len(info) == 0
+print('test 4 pass')
